@@ -4,6 +4,7 @@ using UnityEngine.Rendering.Universal;
 public class ControllerDayNightCycle : MonoBehaviour
 {
     [SerializeField] private Light2D generalLight;
+    [SerializeField] private Light2D windowLight;
     [SerializeField] private DayNightCycle[] dayNightCycle;
     [SerializeField] private float timePerCycle; // en segundos
     private float currentCycleTime = 0;
@@ -14,6 +15,8 @@ public class ControllerDayNightCycle : MonoBehaviour
     private void Start()
     {
         generalLight.color = dayNightCycle[0].colorCycle;
+        verificarLuzVentana();
+        
     }
 
     private void Update()
@@ -34,6 +37,7 @@ public class ControllerDayNightCycle : MonoBehaviour
             {
                 nextCycle += 1;
             }
+            verificarLuzVentana();
         }
 
         // cambiar el color
@@ -43,5 +47,17 @@ public class ControllerDayNightCycle : MonoBehaviour
     private void cambiarColor(Color colorActual, Color siguienteColor)
     {
         generalLight.color = Color.Lerp(colorActual, siguienteColor, percentageCycle);
+    }
+
+    private void verificarLuzVentana()
+    {
+        if (dayNightCycle[currentCycle].nameCycle == "esMañana")
+        {
+            windowLight.enabled = true;
+        }
+        else
+        {
+            windowLight.enabled = false;    
+        }
     }
 }
