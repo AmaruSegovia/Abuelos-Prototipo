@@ -1,21 +1,27 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
+
+
 public class ControllerDayNightCycle : MonoBehaviour
 {
-    [SerializeField] private Light2D generalLight;
-    [SerializeField] private Light2D windowLight;
-    [SerializeField] private DayNightCycle[] dayNightCycle;
-    [SerializeField] private float timePerCycle; // en segundos
-    private float currentCycleTime = 0;
-    private float percentageCycle;
-    private int currentCycle = 0;
-    private int nextCycle = 1;
+    [SerializeField] private Light2D generalLight; // luz general
+    [SerializeField] private Light2D[] windowsLight;
+    [SerializeField] private Color colorTransparente;
+    [SerializeField] private Color colorVisible;
+    [SerializeField] private DayNightCycle[] dayNightCycle; // ciclos del dia
+    [SerializeField] private float timePerCycle; // cuanto tarda cada ciclo en segundos
+    private float currentCycleTime = 0;// tiempo actual del ciclo
+    private float percentageCycle;// porcentaje del cliclo se usa en el cambio de color 
+    private int currentCycle = 0;// ciclo actual
+    private int nextCycle = 1;// siclo siguiente
 
     private void Start()
     {
         generalLight.color = dayNightCycle[0].colorCycle;
         verificarLuzVentana();
+        colorTransparente = new Color(1f,1f,0f,0f);
+        colorVisible = new Color(1f,1f,0f,1f);
         
     }
 
@@ -37,11 +43,12 @@ public class ControllerDayNightCycle : MonoBehaviour
             {
                 nextCycle += 1;
             }
-            verificarLuzVentana();
+            
         }
 
         // cambiar el color
         cambiarColor(dayNightCycle[currentCycle].colorCycle, dayNightCycle[nextCycle].colorCycle);
+        verificarLuzVentana();
     }
 
     private void cambiarColor(Color colorActual, Color siguienteColor)
@@ -51,13 +58,22 @@ public class ControllerDayNightCycle : MonoBehaviour
 
     private void verificarLuzVentana()
     {
-        if (dayNightCycle[currentCycle].nameCycle == "esMañana")
+        if (dayNightCycle[currentCycle].nameCycle == "sunrise")
         {
-            windowLight.enabled = true;
+            foreach (var item in windowsLight)
+            {
+                item.color = Color.Lerp(colorTransparente, colorVisible, percentageCycle);
+            }
+            
         }
-        else
+
+        if (dayNightCycle[currentCycle].nameCycle == "day")
         {
-            windowLight.enabled = false;    
+            foreach (var item in windowsLight)
+            {
+                item.color = Color.Lerp(colorVisible, colorTransparente, percentageCycle);
+            }
+            
         }
     }
 }

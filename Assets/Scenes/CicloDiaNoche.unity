@@ -78297,11 +78297,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generalLight: {fileID: 619394801}
+  windowLight: {fileID: 1985746123}
   dayNightCycle:
-  - colorCycle: {r: 1, g: 0.985644, b: 0.9292453, a: 0}
-    nameCycle: 
-  - colorCycle: {r: 0.24484478, g: 0.22227661, b: 0.3490566, a: 0}
-    nameCycle: 
+  - colorCycle: {r: 0.8066038, g: 1, b: 0.9820876, a: 0}
+    nameCycle: esDia
+  - colorCycle: {r: 0.10219802, g: 0.057671774, b: 0.4528302, a: 0}
+    nameCycle: esNoche
+  - colorCycle: {r: 1, g: 0.7525992, b: 0.41037738, a: 0}
+    nameCycle: "esMa\xF1ana"
   timePerCycle: 5
 --- !u!4 &475091359
 Transform:
@@ -99141,6 +99144,90 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1985746122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1985746124}
+  - component: {fileID: 1985746123}
+  m_Layer: 0
+  m_Name: LuzVentana
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1985746123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985746122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 2
+  m_LightType: 1
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 1, g: 0.8991846, b: 0, a: 1}
+  m_Intensity: 1
+  m_LightVolumeIntensity: 1
+  m_LightVolumeEnabled: 0
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 0
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowsEnabled: 1
+  m_ShadowIntensity: 0.75
+  m_ShadowSoftness: 0.3
+  m_ShadowSoftnessFalloffIntensity: 0.5
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: 2.3408, y: 0.044999957, z: 0}
+    m_Extent: {x: 3.3415, y: 1.7702, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 5.154251, y: -1.2272282, z: 0}
+  - {x: 5.18334, y: 1.3144951, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
+--- !u!4 &1985746124
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985746122}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -21.2, y: 28.45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2041049116
 GameObject:
   m_ObjectHideFlags: 0
@@ -99395,3 +99482,4 @@ SceneRoots:
   - {fileID: 2059319328}
   - {fileID: 1952082153}
   - {fileID: 475091359}
+  - {fileID: 1985746124}
