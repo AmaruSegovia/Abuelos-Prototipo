@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -16,6 +17,11 @@ public class ControllerDayNightCycle : MonoBehaviour
     private int currentCycle = 0;// ciclo actual
     private int nextCycle = 1;// siclo siguiente
 
+    public event EventHandler<OnNightEventArgs> OnNight;
+    public class OnNightEventArgs : EventArgs
+    {
+        public string nombreCiclo;
+    }
     private void Start()
     {
         generalLight.color = dayNightCycle[0].colorCycle;
@@ -45,7 +51,9 @@ public class ControllerDayNightCycle : MonoBehaviour
             }
             
         }
-
+       
+        OnNight?.Invoke(this, new OnNightEventArgs { nombreCiclo = dayNightCycle[currentCycle].nameCycle });
+        
         // cambiar el color
         cambiarColor(dayNightCycle[currentCycle].colorCycle, dayNightCycle[nextCycle].colorCycle);
         verificarLuzVentana();
