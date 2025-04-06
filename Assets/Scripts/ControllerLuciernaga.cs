@@ -3,9 +3,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class HallwayLight : MonoBehaviour
+public class ControllerLuciernaga : MonoBehaviour
 {
-    [SerializeField] private Light2D luzPasillo;
+    [SerializeField] private Light2D[] luciernagas;
     private ControllerDayNightCycle controladorDiaNoche;
     private void Start()
     {
@@ -16,14 +16,19 @@ public class HallwayLight : MonoBehaviour
 
     private void EncenderLuzPasillo(object sender, ControllerDayNightCycle.OnNightEventArgs e)
     {
-        if (e.nombreCiclo == "night" || e.nombreCiclo == "midnight")
-        { 
-            luzPasillo.enabled = true;
+        if (e.nombreCiclo == "night" || e.nombreCiclo == "midnight" || e.nombreCiclo == "dawn")
+        {
+            foreach (var luciernaga in luciernagas)
+            {
+                luciernaga.enabled = true;
+            }
         }
         else
         {
-            luzPasillo.enabled = false;
+            foreach (var luciernaga in luciernagas)
+            {
+                luciernaga.enabled = false;
+            }
         }
     }
-
 }
